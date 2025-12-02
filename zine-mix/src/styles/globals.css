@@ -1,0 +1,187 @@
+/* src/styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Ensure consistent font rendering */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom font families for zine fonts */
+.font-comic-sans {
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive, sans-serif;
+}
+
+.font-papyrus {
+  font-family: 'Papyrus', fantasy, serif;
+}
+
+/* Prevent text selection on draggable elements */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsive heart decorations */
+.heart-decoration {
+  color: #e91e63;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.heart-decoration:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* Loading spinner */
+.spinner {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition-colors;
+}
+
+.btn-success {
+  @apply bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors;
+}
+
+/* Audio player custom styles */
+audio {
+  max-width: 100%;
+  height: 32px;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: #f1f1f1;
+}
+
+/* Zine preview specific styles */
+.zine-preview {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #000;
+}
+
+.zine-preview:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Text area focus styles */
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Custom focus styles for accessibility */
+button:focus,
+select:focus,
+input:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Print styles (for future PDF export) */
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  body * {
+    visibility: hidden;
+  }
+  
+  .print-container, .print-container * {
+    visibility: visible;
+  }
+  
+  body, html {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: vi !important;
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+  
+  .print-container {
+    position: absolute !important;
+    top: 100px !important;        /*pushes it down */
+    left: 0 !important;
+    width: 100vw !important;
+    height: calc(100vh - 20px) !important;  /*accounts for top margin */
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+  
+  @page {
+    size: A4 landscape;
+    margin: 0 !important;
+  }
+}
